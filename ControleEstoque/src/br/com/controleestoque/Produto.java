@@ -38,4 +38,8 @@ public class Produto {
     public void addQuantidade(int quantidade) {
         this.quantidade = this.quantidade + quantidade;
     }
+
+    public void subQuantidade(int quantidade) {
+        this.quantidade = this.quantidade - quantidade;
+    }
 }

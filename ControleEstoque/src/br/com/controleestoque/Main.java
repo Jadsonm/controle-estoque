@@ -9,7 +9,7 @@ import java.util.Scanner;
  * [x] - (1) Cadastrar produto
  *      [ ] - Não cadastrar produto com o mesmo código
  * [x] - (2) Entrada de produto
- * [ ] - (3) Saída de produto
+ * [x] - (3) Saída de produto
  * [x] - (4) Listar produto
  * [x] - Comando para encerrar o progama
  */
@@ -24,7 +24,7 @@ public class Main {
         int quantidade;
 
         do {
-            System.out.println("1 - Para cadastrar\n2 - Para dar entrada\n4 - Para listar");
+            System.out.println("1 - Para cadastrar\n2 - Para dar entrada\n3 - Saida de produto\n4 - Para listar");
             comando = scanner.nextLine();
 
             switch (comando) {
@@ -46,12 +46,32 @@ public class Main {
 
                     entradaProduto(codigo, quantidade);
                     break;
+                case "3":
+                    System.out.print("Digite o código: ");
+                    codigo = scanner.nextLine();
+                    System.out.print("Digite a quantidade: ");
+                    quantidade = Integer.parseInt(scanner.nextLine());
+
+                    saidaProduto(codigo,quantidade);
+                    break;
                 case "4":
                     listarProdutos();
                     break;
+                default:
+                    System.out.println("Comando invalido!");
             }
 
         } while (!comando.equals("exit"));
+    }
+
+    private static void saidaProduto(String codigo, int quantidade) {
+        for (Produto produto : list) {
+            if (produto.getCodigo().equals(codigo)) {
+                produto.subQuantidade(quantidade);
+                return;
+            }
+        }
+        System.out.println("Não foi possivel encontrar produto com o código: " + codigo);
     }
 
     private static void entradaProduto(final String codigo, final int quantidade) {
@@ -77,8 +97,13 @@ public class Main {
     }
 
     private static void cadastrarProduto(final String codigo, final String nome, final int quantidade) {
+        for (Produto produto : list){
+            if (produto.getCodigo().equals(codigo)){
+                System.out.println("Já existe cadastro com esse codigo, tente outro");
+                return;
+            }
+        }
         Produto produto = new Produto(codigo, nome, quantidade);
-
         list.add(produto);
     }
 
