@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /***
  * [x] - Criar uma classe PRODUTO(Código, nome, quantidade)
- * [] - (1) Cadastrar produto
+ * [x] - (1) Cadastrar produto
  *      [] - Não cadastrar produto com o mesmo código
  * [] - (2) Entrada de produto
  * [] - (3) Saída de produto
@@ -21,21 +21,36 @@ public class Main {
         String comando;
 
         do {
+            System.out.println("1 - Para cadastrar\n4 - Para listar" );
             comando = scanner.nextLine();
 
-            if (comando.equals("1")) {
-                System.out.print("Digite o código: ");
-                String codigo = scanner.nextLine();
-                System.out.print("Digite o nome: ");
-                String nome = scanner.nextLine();
-                System.out.print("Digite a quantidade: ");
-                int quantidade = Integer.parseInt(scanner.nextLine());
+            switch (comando){
+                case "1":
+                    System.out.print("Digite o código: ");
+                    String codigo = scanner.nextLine();
+                    System.out.print("Digite o nome: ");
+                    String nome = scanner.nextLine();
+                    System.out.print("Digite a quantidade: ");
+                    int quantidade = Integer.parseInt(scanner.nextLine());
 
-                cadastrarProduto(codigo, nome, quantidade);
+                    cadastrarProduto(codigo, nome, quantidade);
+                    break;
+                case "4":
+                    listarProdutos();
+                    break;
             }
 
-            System.out.println(comando);
         } while (!comando.equals("exit"));
+    }
+
+    private static void listarProdutos() {
+        if(list.isEmpty()){
+            System.out.println("A lista está vazia");
+        }
+        for(int i = 0; i < list.size(); i++){
+            Produto produto = list.get(i);
+            System.out.println("Codigo: " + produto.getCodigo() + "\nNome: " + produto.getNome() + "\nQuantidade: " + produto.getQuantidade());
+        }
     }
 
     private static void cadastrarProduto(final String codigo, final String nome, final int quantidade) {
