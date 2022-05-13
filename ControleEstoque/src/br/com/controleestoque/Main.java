@@ -4,15 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/***
- * [x] - Criar uma classe PRODUTO(Código, nome, quantidade)
- * [x] - (1) Cadastrar produto
- *      [ ] - Não cadastrar produto com o mesmo código
- * [x] - (2) Entrada de produto
- * [x] - (3) Saída de produto
- * [x] - (4) Listar produto
- * [x] - Comando para encerrar o progama
- */
+
 public class Main {
     static List<Produto> list = new ArrayList<>();
 
