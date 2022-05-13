@@ -34,4 +34,8 @@ public class Produto {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
+    public void addQuantidade(int quantidade) {
+        this.quantidade = this.quantidade + quantidade;
+    }
 }
